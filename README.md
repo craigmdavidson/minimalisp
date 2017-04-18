@@ -90,7 +90,7 @@ List<String> distincts = distinct(list("A", "B", "A", "B", "C", "A", "D")); // =
 List<Integer> numbers = filter(list(1, 2, 3, 4, 5, 6, 7), i -> i % 2 == 0); // => [2, 4, 6]
 ```
 
-### Easy Simple and no-so-simple sorting
+### Easy simple and no-so-simple Sorting
 ```java
 
 List<String> words = list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs");
