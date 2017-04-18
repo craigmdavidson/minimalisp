@@ -23,8 +23,8 @@ List<String> fizzBuzz = fizzBuzz(1, 21);   // => ["1", "2", "Fizz", "4", "Buzz",
 
 To use Minimalisp in your objects, either:
 * make your class extend minimalisp.Lisp; 
-* statically import it's minimalisp methods;
-* or use it's static methods through it's minimalisp.Lisp namespace.
+* statically import minimalisp.Lisp methods;
+* or use  minimalisp.Lisp static methods directly.
 
 ## FEATURES
 
