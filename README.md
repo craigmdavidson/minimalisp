@@ -1,6 +1,6 @@
 # Minimalisp
 
-With Minimalisp, instead of looking like [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), your Java FizzBuzz can be:
+With Minimalisp, instead of looking like [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), you can write a FizzBuzz like this:
 
 ```java
 
