@@ -78,7 +78,7 @@ List<String> flattened = flatten(list(list("A", "B"), list("C", "D")));  //=> ["
 // instead of this...
 List<String> upcased = list("a", "b", "c", "d").
                          stream().
-                         map(String::toUpcase).
+                         map(String::toUpperCase).
                          collect(Collections.toList);
 // just write this
 List<String> upcased = map(list("a", "b", "c", "d"), String::toUpperCase); 
