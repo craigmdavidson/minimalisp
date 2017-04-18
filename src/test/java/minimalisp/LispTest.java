@@ -59,6 +59,12 @@ public class LispTest extends Lisp {
 		assertEquals(expected, map("greeting", "Hey", "name", "Joe"));		
 	}
 	
+	@Test public void testMakeATypedMapFromVarargs(){
+		Map<String, Integer> intMap = map("a", 1, "b", 2, "c", 3);
+		int i = intMap.get("a");
+		assertEquals(1, i);
+	}
+	
 	@Test public void testMakeAMapFromAKeysListAndAValuesList(){
 		Map<String, String> expected = new HashMap<String, String>();
 		expected.put("greeting", "Hey");
@@ -122,7 +128,8 @@ public class LispTest extends Lisp {
 				if (i % 3 == 0 && i % 5 == 0) return "FizzBuzz";
 				else if (i % 3 == 0) return "Fizz";
 				else if (i % 5 == 0) return "Buzz";
-				else return String.valueOf(i); }));
+				else return String.valueOf(i); })
+		);
 	}
 	
 	@Test public void testRange(){

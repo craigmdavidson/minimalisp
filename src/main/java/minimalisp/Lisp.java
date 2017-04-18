@@ -25,7 +25,6 @@ import java.util.stream.IntStream;
  * 
  * <pre>{@code
  *  
- * 
  *     // FizzBuzz as:
  *     assertEquals(
  *     		list("1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz", "16", "17", "Fizz", "19"), 
@@ -150,17 +149,19 @@ public class Lisp {
 	 * 
 	 */
     @SuppressWarnings("unchecked")
-	public static <T, K> Map<K, Object> map(List<T> objects) {
-        Map<K, Object> map = new LinkedHashMap<K, Object>();
-        for (int i=0; i<objects.size(); i=i+2) map.put((K) objects.get(i), objects.get(i+1));
+	public static <T, K, V> Map<K, V> map(List<T> objects) {
+        Map<K, V> map = new LinkedHashMap<K, V>();
+        for (int i=0; i<objects.size(); i=i+2) map.put((K) objects.get(i), (V)objects.get(i+1));
         return map;
     }
     
     /**
      * Returns a Map from the supplied array of objects (key, value, key, value, ...)
      */
-	@SafeVarargs public static <T, K> Map<K, Object> map(T ...objects){ 
-		return map(list(objects)); 
+	@SafeVarargs public static <T, K, V> Map<K, V> map(T ...objects){ 
+        Map<K, V> map = new LinkedHashMap<K, V>();
+        for (int i=0; i< objects.length; i=i+2) map.put((K) objects[i], (V)objects[i+1]);
+        return map;
 	}
 	
 	/**
