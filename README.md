@@ -2,7 +2,7 @@
 
 *Functions to make Java list processing as (almost) as fun and easy as Lisp, Ruby, and Clojure.*
 
-Instead of looking like [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), your FizzBuzz can be:
+Instead of looking like [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), your Java FizzBuzz can be:
 
 ```java
 
