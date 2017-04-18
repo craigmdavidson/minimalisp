@@ -59,7 +59,7 @@ Map<String, Integer> c = map(list("A", 1, "B", 2, "C", 3));      // => { "A" : 1
 
 ```
 
-### Lists Processing 
+### List Processing 
 ```java
 // immutable reverse
 List<String> reversed = reverse(list("A", "B", "C", "D")); // => ["A", "B", "C", "D"]
