@@ -75,13 +75,14 @@ List<String> flattened = flatten(list(list("A", "B"), list("C", "D")));  //=> ["
 ### Easy Mapping, Reducing and Filtering
 ```java
 
+List<String> letters = list("a", "b", "c", "d");
 // instead of this...
-List<String> upcased = list("a", "b", "c", "d").
+List<String> upcased = letters.
                          stream().
                          map(String::toUpperCase).
                          collect(Collections.toList);
 // just write this
-List<String> upcased = map(list("a", "b", "c", "d"), String::toUpperCase); 
+List<String> upcased = map(letters), String::toUpperCase); 
 
 int reduced = reduce(list(1,2,3,4,5), (a, b) -> a+b);                       // 15
 
