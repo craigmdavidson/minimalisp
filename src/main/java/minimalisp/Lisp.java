@@ -235,7 +235,7 @@ public class Lisp {
 	/**  
 	 * Returns a new list the items in the list sorted by the natural order of the results of applying the passed function to the items in the list.
 	 */
-	public <T, R> List<T> sortBy(List<T> list, Function<T, R> func) {
+	public static <T, R> List<T> sortBy(List<T> list, Function<T, R> func) {
 		return sortBy(list, new Comparator<T>() {
 			public int compare(T o1, T o2) {
 				Comparator c = Comparator.naturalOrder();
@@ -247,7 +247,7 @@ public class Lisp {
 	/**
 	 * Returns a new list of items in the list sorted by the supplied comparator.
 	 */
-	public <T> List<T> sortBy(List<T> list, Comparator<? super T> comparitor) {
+	public static <T> List<T> sortBy(List<T> list, Comparator<? super T> comparitor) {
 		List<T> copy = copy(list);
 		Collections.sort(copy, comparitor);
 		return copy;
