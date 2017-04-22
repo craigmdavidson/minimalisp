@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/craigmdavidson/minimalisp.svg?branch=master)](https://travis-ci.org/craigmdavidson/minimalisp)
+
 # Minimalisp
 
 With Minimalisp, instead of looking like [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), you can write a FizzBuzz like this:
