@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/craigmdavidson/minimalisp.svg?branch=master)](https://travis-ci.org/craigmdavidson/minimalisp)
+[![Build Status](https://travis-ci.org/craigmdavidson/minimalisp.svg?branch=master)](https://travis-ci.org/craigmdavidson/minimalisp) [![Code Climate](https://codeclimate.com/github/craigmdavidson/minimalisp/badges/gpa.svg)](https://codeclimate.com/github/craigmdavidson/minimalisp)
 
 # Minimalisp
 
