@@ -6,6 +6,4 @@ addons:
   apt:
     packages:
       - oracle-java8-installer
-  code_climate:
-    repo_token: 2c1a451306e3177b85ac7ec3d738ad031fb35996c631bb815cbc6eeedfb5620d
 
