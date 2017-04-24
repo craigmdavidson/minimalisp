@@ -7,3 +7,6 @@ addons:
     packages:
       - oracle-java8-installer
 
+notifications:
+  slack: uglybugdesign:x1lPUImO8LcTWRbMgPtqvLeE
+
