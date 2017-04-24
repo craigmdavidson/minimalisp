@@ -246,10 +246,10 @@ public class Lisp {
    * Returns a new list the items in the list sorted by the natural order of the
    * results of applying the passed function to the items in the list.
    */
-  public static <T, R> List<T> sortBy(List<T> list, Function<T, R> func) {
+  public static <T, R extends Comparable<R>> List<T> sortBy(List<T> list, Function<T, R> func) {
     return sortBy(list, new Comparator<T>() {
       public int compare(T o1, T o2) {
-        Comparator c = Comparator.naturalOrder();
+        Comparator<R> c = Comparator.<R>naturalOrder();
         return c.compare(func.apply(o1), func.apply(o2));
       }
     });
