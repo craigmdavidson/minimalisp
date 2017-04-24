@@ -2,12 +2,15 @@ package minimalisp;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -32,6 +35,15 @@ public class LispTest extends Lisp {
 
   @Test public void testMakeAListIntoAnArray() {
     assertArrayEquals(array("A", "B", "C", "D"), array(list("A", "B", "C", "D")));
+  }
+  
+  @Test public void testMakeASet(){
+    Set<String> letters = new HashSet<String>();
+    letters.add("A");
+    letters.add("B");
+    letters.add("C");
+    letters.add("D");
+    assertEquals(letters , set("A", "B", "C", "D"));
   }
 
   @Test public void testMakeAMapFromAList() {
@@ -80,14 +92,21 @@ public class LispTest extends Lisp {
 
   @Test public void testFirst() {
     assertEquals("A", first(list("A", "B", "C", "D")));
+    assertNull(first(list()));
+    assertNull(first(null));
   }
 
   @Test public void testLast() {
     assertEquals("D", last(list("A", "B", "C", "D")));
+    assertNull(last(list()));
+    assertNull(last(null));
   }
 
   @Test public void testRest() {
     assertEquals(list("B", "C", "D"), rest(list("A", "B", "C", "D")));
+    
+    assertEquals(list(), rest(list()));
+    assertNull(rest(null));
   }
 
   @Test public void testCompact() {
@@ -99,7 +118,24 @@ public class LispTest extends Lisp {
   }
 
   @Test public void testZip() {
-    assertEquals(list(list("A", "B"), list("C", "D")), zip(list("A", "C"), list("B", "D")));
+    assertEquals(
+        list(
+            list("A", "B"), 
+            list("C", "D")), 
+        zip(
+            list("A", "C"), 
+            list("B", "D")));
+  }
+  
+  @Test public void testZip_uneven() {
+    assertEquals(
+        list(
+            list("A", "B"), 
+            list("C", "D"), 
+            list("E", null)), 
+        zip(
+            list("A", "C", "E"), 
+            list("B", "D")));
   }
 
   @Test public void testDistinct() {
