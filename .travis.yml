@@ -10,3 +10,8 @@ addons:
 notifications:
   slack: uglybugdesign:x1lPUImO8LcTWRbMgPtqvLeE
 
+before_install:
+  - pip install --user codecov
+
+after_success:
+  - codecov
