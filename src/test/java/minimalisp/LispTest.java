@@ -156,8 +156,20 @@ public class LispTest extends Lisp {
   }
 
   @Test public void testSortBy_withFunction() {
-    assertEquals(list("The", "Fox", "the", "over", "lazy", "dogs", "Quick", "Brown", "Jumped"),
+    assertEquals(
+        list("The", "Fox", "the", "over", "lazy", "dogs", "Quick", "Brown", "Jumped"),
         sortBy(list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs"), String::length));
-
+  }
+  
+  @Test public void testGroupBy() {
+    assertEquals(
+      map(
+          3, list("The", "Fox", "the"), 
+          4, list("over", "lazy", "dogs"), 
+          5, list("Quick", "Brown"), 
+          6, list("Jumped")),
+      groupBy(
+          list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs"), 
+          String::length));
   }
 }

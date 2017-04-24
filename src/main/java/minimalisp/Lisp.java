@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -254,6 +255,15 @@ public class Lisp {
       }
     });
   }
+  
+  /**
+   * Returns a new Map where the keys are the evaluated result from the block and the values
+   * are arrays of elements in the collection that correspond to the key.
+   */
+  public static <T, G> Map<G, List<T>> groupBy(List<T> list, Function<T, G> func) {
+    return list.stream().collect(Collectors.groupingBy(func));
+  }
+  
 
   /**
    * Returns a new list of items in the list sorted by the supplied comparator.
