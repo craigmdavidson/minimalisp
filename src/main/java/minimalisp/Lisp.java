@@ -133,7 +133,7 @@ public class Lisp {
    * Returns a List of integers starting (inclusive) of the first number, and
    * finishing (exlusive of the last).
    */
-  public List<Integer> range(int startInclusive, int endExclusive) {
+  public static List<Integer> range(int startInclusive, int endExclusive) {
     return IntStream.range(startInclusive, endExclusive).boxed().collect(Collectors.toList());
   }
 
