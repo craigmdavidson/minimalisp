@@ -1,5 +1,5 @@
 {
-  "package": { "name": "minimalisp", "repo": "minimalisp", "subject": "minimalisp" },
+  "package": { "name": "craigmdavidson", "repo": "minimalisp", "subject": "minimalisp" },
   "version": { "name": "0.0.1" },
   "files": [ {"includePattern": "target/(.jar)", "excludePattern": "target/.*.zip$", "uploadPattern": "/$1"} ],
   "publish": true
