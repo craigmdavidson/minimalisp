@@ -1,14 +1,17 @@
 language: java
 jdk:
-  - oraclejdk8
-
+- oraclejdk8
 addons:
   apt:
     packages:
-      - oracle-java8-installer
-
+    - oracle-java8-installer
 before_install:
-  - pip install --user codecov
-
+- pip install --user codecov
 after_success:
-  - codecov
+- codecov
+deploy:
+  provider: bintray
+  file: ./.bintray-descriptor.json
+  user: craigmdavidson
+  key:
+    secure: FwL1UWdquruhuO5Hhx/xU2Lx8xWed2gtaCaPul0wdj0iZ/egedtwrjBtEOAjRLZuOrR6eubKv7MFYTc50iTMjReH77ruSKWXaYqGJ1nkz456JZYZK5HBBdNwAnLYoaJM5XT6r41pqCehLSO4S4lWu4l+bo04jTyVvnVxBjTcB/YeVoMJirvr1K0I1sK2oXYosQaxPYSYzpWPbnfQ3FTu/L+qtb0XfcYdczv9GTk6obTmo9IynXRr/uFjJvJz10jR1lIVZx3NETnb0PMZuXO1ak8/2HOd4+b03P7ygJF9IA5a9KveOsHbyxUpMXhypS/AzhmEEcspFHrYiE+fDvKpEUXPG2E7IdcmG+eiRJRMWT0KAcRUfaQxVf0rj4f/oiOEs3cGmL7ZLYhM2I/0gM5NXH9c6Z6TeoHLvMgXWjqTu7Tu/vH7Dbuc7CaIwlEszeoa4YwVwko1MgSBE2y0anrbc+w5dPU4JsZn9+Lifeew7UhfIzamc976cB9ZW6L2qTKKTE+/MOqXhHNocRV3tqgFP7T1e4l/hoEIYgckfj9RRUU85X3hCfpPobC1oC5fbJJeORCqzvXsUmDjoyarOs/cGtb1CZFX+nHrLPZUtgYmHaVQCNtFdeijRgCPwNZgNtbTtiux8LhwOsW1tqyNvtH6+JJzg7WaPqbdcN25KwmSRrw=
