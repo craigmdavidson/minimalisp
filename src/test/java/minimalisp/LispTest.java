@@ -83,6 +83,12 @@ public class LispTest extends Lisp {
   @Test public void testInvert() {
     assertEquals(map(1, "A", 2, "B"), invert(map("A", 1, "B", 2)));
   }
+  
+  @Test public void testGet(){
+    assertEquals("1", get(map("A", "1", "B", "2", "C", "3"), "A", "4"));
+    assertEquals("2", get(map("A", "1", "B", "2", "C", "3"), "B", "4"));    
+    assertEquals("4", get(map("A", "1", "B", "2", "C", "3"), "D", "4"));    
+  }
 
   @Test public void testImmutableReverse() {
     List<String> letters = list("A", "B", "C", "D");
