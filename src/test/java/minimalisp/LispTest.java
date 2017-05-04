@@ -101,10 +101,21 @@ public class LispTest extends Lisp {
     assertNull(last(list()));
     assertNull(last(null));
   }
+  
+  @Test public void testHead() {
+    assertNull(head(null, 3));
+    assertEquals(list(1, 2), head(list(1, 2), 3));
+    assertEquals(list(1, 2, 3), head(list(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 3));
+  }
+  
+  @Test public void testTail() {
+    assertEquals(list(8, 9, 10), tail(list(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 3));
+    assertEquals(list(1, 2), tail(list(1, 2), 3));
+    assertNull(tail(null, 3));
+  }
 
   @Test public void testRest() {
     assertEquals(list("B", "C", "D"), rest(list("A", "B", "C", "D")));
-    
     assertEquals(list(), rest(list()));
     assertNull(rest(null));
   }

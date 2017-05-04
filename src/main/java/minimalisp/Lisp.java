@@ -190,12 +190,30 @@ public class Lisp {
   public static <T> T first(List<T> list) {
     return list == null || list.isEmpty() ? null : list.get(0);
   }
+  
+  /** 
+   * Returns a list of the first n items in the list.
+   */
+  public static <T> List<T> head(List<T> list, int n) {
+    if (list == null) return null;
+    if (list.size() < n) return copy(list);
+    return list.subList(0, n); 
+  }
 
   /**
    * Returns the last item in the list.
    */
   public static <T> T last(List<T> list) {
     return list == null || list.isEmpty() ? null : list.get(list.size() - 1);
+  }
+  
+  /**
+   * Returns a list of the last n items in the list
+   */
+  public static <T> List<T> tail(List<T> list, int n) {
+    if (list == null) return null;
+    if (list.size() < n) return copy(list);    
+    return list.subList((list.size() - n), list.size());
   }
 
   /**
