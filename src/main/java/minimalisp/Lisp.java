@@ -341,6 +341,15 @@ public class Lisp {
   }
 
   /**
+   * Returns a new Map with the contents of the second provided map merged over the provided map  
+   */
+  public static <K, V> Map<K, V> merge(Map<K, V> a, Map<K, V> b) {
+    Map<K, V> merged = new LinkedHashMap<K, V>(a);
+    merged.putAll(b);
+    return merged;
+  }
+  
+  /**
    * Returns a new combined list of merged elements of each list.
    */
   public static <T> List<List<T>> zip(List<T> a, List<T> b) {
