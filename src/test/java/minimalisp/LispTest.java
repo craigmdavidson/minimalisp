@@ -138,6 +138,12 @@ public class LispTest extends Lisp {
             list("B", "D")));
   }
   
+  @Test public void testExcept() {
+    assertEquals(map("B", 2, "C", 3, "D", 4), except(map("A", 1, "B", 2, "C", 3, "D", 4), "A"));
+    assertEquals(map("A", 1, "B", 2, "C", 3, "D", 4), except(map("A", 1, "B", 2, "C", 3, "D", 4), "E"));    
+    assertEquals(map("B", 2, "C", 3), except(map("A", 1, "B", 2, "C", 3, "D", 4), "A", "D", "E"));
+  }
+  
   @Test public void testZip_uneven() {
     assertEquals(
         list(

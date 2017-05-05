@@ -183,6 +183,15 @@ public class Lisp {
   @SafeVarargs public static <T> Set<T> set(T... objects) {
     return hashSet(list(objects));
   }
+  
+  /**
+   * Returns a new Map excluding the entries for the passed Map keys
+   */
+  @SafeVarargs public static <K, V> Map<K, V> except(Map<K, V> map, K... keys){
+    Map<K, V> copy = new LinkedHashMap<K, V>(map);
+    list(keys).forEach(key -> copy.remove(key));
+    return copy;
+  }
 
   /**
    * Returns the first item in the list.
