@@ -80,6 +80,20 @@ public class LispTest extends Lisp {
     assertEquals(expected, map(list("greeting", "name"), list("Hey", "Joe")));
   }
 
+  @Test public void testMergeMaps(){
+    assertEquals(
+        map("A", 1, "B", 2, "C", 3, "D", 4),
+        merge(map("A", 1, "B", 2), map("C", 3, "D", 4)));
+    
+    assertEquals(
+        map("A", 1, "B", 2, "C", 10, "D", 11),
+        merge(map("A", 1, "B", 2, "C", 3), map("C", 10, "D", 11)));
+
+    assertEquals(
+        map("C", 3, "D", 11, "A", 1, "B", 2),
+        merge(map("C", 10, "D", 11), map("A", 1, "B", 2, "C", 3)));
+  }
+  
   @Test public void testInvert() {
     assertEquals(map(1, "A", 2, "B"), invert(map("A", 1, "B", 2)));
   }
