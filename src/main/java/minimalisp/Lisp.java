@@ -171,6 +171,14 @@ public class Lisp {
   }
 
   /**
+   * Returns a value for the supplied key or if no value returns the supplied default value
+   */
+  public static <K, V> V get(Map<K,V> map, K key, V defaultValue){
+    V value = map.get(key);
+    return value != null ? value : defaultValue;
+  }
+  
+  /**
    * Returns a Set containing items in the supplied List.
    */
   public static <T> Set<T> hashSet(List<T> objects) {
