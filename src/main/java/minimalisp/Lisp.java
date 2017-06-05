@@ -220,15 +220,15 @@ public class Lisp {
    * Returns a new List of the results of applying the passed function to the
    * items in the list.
    */
-  public static <T, R> List<R> map(List<T> items, Function<T, R> func) {
+  public static <T, R> List<R> map(Function<T, R> func, List<T> items) {
     return items.stream().map(func).collect(Collectors.toList());
-  }
+  }  
 
   /**
    * Returns a Reduction of the results of applying the passed accumulator to
    * the items in the list.
    */
-  public static <T> T reduce(List<T> items, BinaryOperator<T> accumulator) {
+  public static <T> T reduce(BinaryOperator<T> accumulator, List<T> items) {
     return items.stream().reduce(accumulator).get();
   }
 
@@ -243,7 +243,7 @@ public class Lisp {
    * Returns a new list of the results of applying the predicate to the items in
    * the list.
    */
-  public static <T> List<T> filter(List<T> list, Predicate<T> predicate) {
+  public static <T> List<T> filter(Predicate<T> predicate, List<T> list) {
     return list.stream().filter(predicate).collect(Collectors.toList());
   }
 
@@ -265,20 +265,21 @@ public class Lisp {
    * Returns a new list the items in the list sorted by the natural order of the
    * results of applying the passed function to the items in the list.
    */
-  public static <T, R extends Comparable<R>> List<T> sortBy(List<T> list, Function<T, R> func) {
-    return sortBy(list, new Comparator<T>() {
-      public int compare(T o1, T o2) {
-        Comparator<R> c = Comparator.<R>naturalOrder();
-        return c.compare(func.apply(o1), func.apply(o2));
-      }
-    });
+  public static <T, R extends Comparable<R>> List<T> sortBy(Function<T, R> func, List<T> list) {
+    return sortBy(
+      new Comparator<T>() {
+        public int compare(T o1, T o2) {
+          return Comparator.<R>naturalOrder().compare(func.apply(o1), func.apply(o2));
+        }
+      }, 
+      list);
   }
   
   /**
    * Returns a new Map where the keys are the evaluated result from the block and the values
    * are arrays of elements in the collection that correspond to the key.
    */
-  public static <T, G> Map<G, List<T>> groupBy(List<T> list, Function<T, G> func) {
+  public static <T, G> Map<G, List<T>> groupBy(Function<T, G> func, List<T> list) {
     return list.stream().collect(Collectors.groupingBy(func));
   }
   
@@ -286,7 +287,7 @@ public class Lisp {
   /**
    * Returns a new list of items in the list sorted by the supplied comparator.
    */
-  public static <T> List<T> sortBy(List<T> list, Comparator<? super T> comparitor) {
+  public static <T> List<T> sortBy(Comparator<? super T> comparitor, List<T> list) {
     List<T> copy = copy(list);
     Collections.sort(copy, comparitor);
     return copy;
