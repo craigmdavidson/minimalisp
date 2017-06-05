@@ -21,74 +21,6 @@ import java.util.stream.IntStream;
  * 
  * Makes functional style programming easier in Java through easier list processing.
  * 
- * <p>Either have your class extend minimalisp.Lisp (if it's lisp processing it, statically import it's methods or use it directly (e.g. Lisp.list(1,2,3,4)).</p. 
- * 
- * <pre>{@code
- *  
- *     // FizzBuzz as:
- *     assertEquals(
- *        list("1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz", "16", "17", "Fizz", "19"), 
- *          map(range(1,20), i -> {
- *            if (i % 3 == 0 && i % 5 == 0) return "FizzBuzz";
- *            else if (i % 3 == 0) return "Fizz";
- *            else if (i % 5 == 0) return "Buzz";
- *            else return String.valueOf(i); }));
- * 
- *     // easy list creation
- *     List<String> letters = new ArrayList<String>();
- *     letters.add("A");
- *     letters.add("B");
- *     letters.add("C");
- *     letters.add("D");
- *     // becomes...
- *     assertEquals(letters, list("A", "B", "C", "D"));
- *     
- *     // easy array creation
- *     assertArrayEquals(new String[] {"A", "B", "C", "D"}, array("A", "B", "C", "D"));
- *     
- *     // easy map creation
- *     Map<String, String> expected = new HashMap<String, String>();
- *     expected.put("greeting", "Hey");
- *     expected.put("name", "Joe");
- *     // becomes...      
- *     assertEquals(expected, map("greeting", "Hey", "name", "Joe"));     
- * 
- *     // Transform lists to arrays and back again
- *     assertEquals(list("A", "B", "C", "D"), list(array("A", "B", "C", "D")));
- *     assertArrayEquals(array("A", "B", "C", "D"), array(list("A", "B", "C", "D")));
- *     assertEquals(map(1, "A", 2, "B"), invert(map("A", 1, "B", 2)));     
- *     
- *     // immutable reversing
- *     List<String> letters = list("A", "B", "C", "D");
- *     assertEquals(list("D", "C", "B", "A"), reverse(letters));
- *     assertEquals(list("A", "B", "C", "D"), letters);
- *
- *     // quick first and last items
- *     assertEquals("A", first(list("A", "B", "C", "D")));
- *     assertEquals("D", last(list("A", "B", "C", "D")));
- *     
- *     // compact away null values
- *     assertEquals(list("A", "B", "C", "D"), compact(list("A", null, null, "B", null, "C", null, "D")));
- *
- *     // flatten deep lists
- *     assertEquals(list("A", "B", "C", "D"), flatten(list(list("A", "B"), list("C", "D"))));
- *     
- *     // quick mapping and filtering 
- *     assertEquals(list("A", "B", "C", "D"), map(list("a", "b", "c", "d"), String::toUpperCase));     
- *     assertEquals(list(2, 4, 6), filter(list(1,2,3,4,5,6,7), i -> i % 2 == 0));
- *     
- *     // find unique values
- *     assertEquals(list("A", "B", "C", "D"), distinct(list("A", "B", "A", "B", "C", "C", "A", "D")));
- *     
- *     // sort by results of applied functions 
- *     assertEquals(
- *      list("The", "Fox", "the", "over", "lazy", "dogs", "Quick", "Brown", "Jumped"), 
- *      sortBy(
- *            list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs"),
- *        String::length));    
- *     
- * </pre>
- * 
  * @author Craig Davidson
  *
  */
@@ -130,7 +62,7 @@ public class Lisp {
 
   /**
    * Returns a List of integers starting (inclusive) of the first number, and
-   * finishing (exlusive of the last).
+   * finishing (exclusive of the last).
    */
   public static List<Integer> range(int startInclusive, int endExclusive) {
     return IntStream.range(startInclusive, endExclusive).boxed().collect(Collectors.toList());
@@ -281,7 +213,6 @@ public class Lisp {
   public static <T, G> Map<G, List<T>> groupBy(Function<T, G> func, List<T> list) {
     return list.stream().collect(Collectors.groupingBy(func));
   }
-  
 
   /**
    * Returns a new list of items in the list sorted by the supplied comparator.
