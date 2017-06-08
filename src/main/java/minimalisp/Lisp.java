@@ -282,6 +282,23 @@ public class Lisp {
     return list.stream().collect(Collectors.groupingBy(func));
   }
   
+  public static <T> List<List<T>> inGroupsOf(int size, List<T> list){
+    List<List<T>> groups = new ArrayList<List<T>>();
+    List<T> group = new ArrayList<T>();
+    groups.add(group);
+    int count = 0;
+    for(T item : list){
+      if (count == size) {
+        group = new ArrayList<T>();
+        groups.add(group);
+        count = 0;
+      }
+      group.add(item);
+      count++;
+    }
+    return groups;    
+  }
+  
 
   /**
    * Returns a new list of items in the list sorted by the supplied comparator.
