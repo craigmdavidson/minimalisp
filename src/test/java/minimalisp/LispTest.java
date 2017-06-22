@@ -245,4 +245,10 @@ public class LispTest extends Lisp {
           list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs"), 
           String::length));
   }
+  
+  @Test public void testInGroupsOf() {
+    assertEquals(
+        list(list(1,2,3), list(4,5,6), list(7,8,9), list(10)),
+        inGroupsOf(3, range(1, 11)));
+  }
 }
