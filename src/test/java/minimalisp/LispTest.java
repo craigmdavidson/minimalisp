@@ -180,17 +180,19 @@ public class LispTest extends Lisp {
   }
 
   @Test public void testMap() {
-    assertEquals(list("A", "B", "C", "D"), map(list("a", "b", "c", "d"), String::toUpperCase));
+    assertEquals(list("A", "B", "C", "D"), map(String::toUpperCase, list("a", "b", "c", "d")));
   }
 
   @Test public void testFizzBuzz() {
-    assertEquals(list("1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14",
-        "FizzBuzz", "16", "17", "Fizz", "19"), map(range(1, 20), i -> {
-          if (i % 3 == 0 && i % 5 == 0) return "FizzBuzz";
-          else if (i % 3 == 0) return "Fizz";
-          else if (i % 5 == 0) return "Buzz";
-          else return String.valueOf(i);
-        }));
+    assertEquals(
+        list("1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz", "16", "17", "Fizz", "19"), 
+        map(
+          i -> {
+                 if (i % 3 == 0 && i % 5 == 0) return "FizzBuzz";
+                 else if (i % 3 == 0) return "Fizz";
+                 else if (i % 5 == 0) return "Buzz";
+                 else return String.valueOf(i);}, 
+          range(1, 20)));
   }
 
   @Test public void testRange() {
@@ -198,19 +200,19 @@ public class LispTest extends Lisp {
   }
 
   @Test public void testReduce() {
-    int reduced = reduce(list(1, 2, 3, 4, 5), (a, b) -> a + b);
+    int reduced = reduce((a, b) -> a + b, list(1, 2, 3, 4, 5));
     assertEquals(15, reduced);
 
-    double reducedDoubles = reduce(list(1.0, 2.0, 3.0, 4.0, 5.0), (a, b) -> a + b);
+    double reducedDoubles = reduce((a, b) -> a + b, list(1.0, 2.0, 3.0, 4.0, 5.0));
     assertEquals(15.0, reducedDoubles, 0);
   }
 
   @Test public void testSum() {
-    assertEquals(15, sum(map(list(1, 2, 3, 4, 5), BigDecimal::valueOf)).intValue());
+    assertEquals(15, sum(map(BigDecimal::valueOf, list(1, 2, 3, 4, 5))).intValue());
   }
 
   @Test public void testFilter() {
-    assertEquals(list(2, 4, 6), filter(list(1, 2, 3, 4, 5, 6, 7), i -> i % 2 == 0));
+    assertEquals(list(2, 4, 6), filter(i -> i % 2 == 0, list(1, 2, 3, 4, 5, 6, 7)));
   }
 
   @Test public void testDifference() {
@@ -224,14 +226,13 @@ public class LispTest extends Lisp {
 
   @Test public void testSortBy_withComparitor() {
     assertEquals(list("The", "Fox", "the", "over", "lazy", "dogs", "Quick", "Brown", "Jumped"),
-        sortBy(list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs"),
-            (a, b) -> a.length() - b.length()));
+        sortBy((a, b) -> a.length() - b.length(), list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs")));
   }
 
   @Test public void testSortBy_withFunction() {
     assertEquals(
         list("The", "Fox", "the", "over", "lazy", "dogs", "Quick", "Brown", "Jumped"),
-        sortBy(list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs"), String::length));
+        sortBy(String::length, list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs")));
   }
   
   @Test public void testGroupBy() {
@@ -242,8 +243,9 @@ public class LispTest extends Lisp {
           5, list("Quick", "Brown"), 
           6, list("Jumped")),
       groupBy(
-          list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs"), 
-          String::length));
+          String::length, 
+          list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs"))
+    );
   }
   
   @Test public void testInGroupsOf() {
