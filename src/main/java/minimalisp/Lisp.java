@@ -102,6 +102,14 @@ public class Lisp {
   }
 
   /**
+   * Returns a value for the supplied key or if no value returns the supplied default value
+   */
+  public static <K, V> V get(Map<K,V> map, K key, V defaultValue){
+    V value = map.get(key);
+    return value != null ? value : defaultValue;
+  }
+  
+  /**
    * Returns a Set containing items in the supplied List.
    */
   public static <T> Set<T> hashSet(List<T> objects) {
@@ -113,6 +121,15 @@ public class Lisp {
    */
   @SafeVarargs public static <T> Set<T> set(T... objects) {
     return hashSet(list(objects));
+  }
+  
+  /**
+   * Returns a new Map excluding the entries for the passed Map keys
+   */
+  @SafeVarargs public static <K, V> Map<K, V> except(Map<K, V> map, K... keys){
+    Map<K, V> copy = new LinkedHashMap<K, V>(map);
+    list(keys).forEach(key -> copy.remove(key));
+    return copy;
   }
 
   /**
@@ -213,6 +230,23 @@ public class Lisp {
   public static <T, G> Map<G, List<T>> groupBy(Function<T, G> func, List<T> list) {
     return list.stream().collect(Collectors.groupingBy(func));
   }
+  
+  public static <T> List<List<T>> inGroupsOf(int size, List<T> list){
+    List<List<T>> groups = new ArrayList<List<T>>();
+    List<T> group = new ArrayList<T>();
+    groups.add(group);
+    int count = 0;
+    for(T item : list){
+      if (count == size) {
+        group = new ArrayList<T>();
+        groups.add(group);
+        count = 0;
+      }
+      group.add(item);
+      count++;
+    }
+    return groups;    
+  }
 
   /**
    * Returns a new list of items in the list sorted by the supplied comparator.
@@ -271,6 +305,15 @@ public class Lisp {
     return clear(copy(list));
   }
 
+  /**
+   * Returns a new Map with the contents of the second provided map merged over the provided map  
+   */
+  public static <K, V> Map<K, V> merge(Map<K, V> a, Map<K, V> b) {
+    Map<K, V> merged = new LinkedHashMap<K, V>(a);
+    merged.putAll(b);
+    return merged;
+  }
+  
   /**
    * Returns a new combined list of merged elements of each list.
    */

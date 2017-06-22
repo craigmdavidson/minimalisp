@@ -80,8 +80,28 @@ public class LispTest extends Lisp {
     assertEquals(expected, map(list("greeting", "name"), list("Hey", "Joe")));
   }
 
+  @Test public void testMergeMaps(){
+    assertEquals(
+        map("A", 1, "B", 2, "C", 3, "D", 4),
+        merge(map("A", 1, "B", 2), map("C", 3, "D", 4)));
+    
+    assertEquals(
+        map("A", 1, "B", 2, "C", 10, "D", 11),
+        merge(map("A", 1, "B", 2, "C", 3), map("C", 10, "D", 11)));
+
+    assertEquals(
+        map("C", 3, "D", 11, "A", 1, "B", 2),
+        merge(map("C", 10, "D", 11), map("A", 1, "B", 2, "C", 3)));
+  }
+  
   @Test public void testInvert() {
     assertEquals(map(1, "A", 2, "B"), invert(map("A", 1, "B", 2)));
+  }
+  
+  @Test public void testGet(){
+    assertEquals("1", get(map("A", "1", "B", "2", "C", "3"), "A", "4"));
+    assertEquals("2", get(map("A", "1", "B", "2", "C", "3"), "B", "4"));    
+    assertEquals("4", get(map("A", "1", "B", "2", "C", "3"), "D", "4"));    
   }
 
   @Test public void testImmutableReverse() {
@@ -136,6 +156,12 @@ public class LispTest extends Lisp {
         zip(
             list("A", "C"), 
             list("B", "D")));
+  }
+  
+  @Test public void testExcept() {
+    assertEquals(map("B", 2, "C", 3, "D", 4), except(map("A", 1, "B", 2, "C", 3, "D", 4), "A"));
+    assertEquals(map("A", 1, "B", 2, "C", 3, "D", 4), except(map("A", 1, "B", 2, "C", 3, "D", 4), "E"));    
+    assertEquals(map("B", 2, "C", 3), except(map("A", 1, "B", 2, "C", 3, "D", 4), "A", "D", "E"));
   }
   
   @Test public void testZip_uneven() {
@@ -220,5 +246,11 @@ public class LispTest extends Lisp {
           String::length, 
           list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the", "lazy", "dogs"))
     );
+  }
+  
+  @Test public void testInGroupsOf() {
+    assertEquals(
+        list(list(1,2,3), list(4,5,6), list(7,8,9), list(10)),
+        inGroupsOf(3, range(1, 11)));
   }
 }
