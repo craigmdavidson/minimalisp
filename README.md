@@ -18,7 +18,7 @@ Instead of [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseE
 public List<String> fizzBuzz(int start, int finish){
   return map( 
            i -> {
-             if (i % 3 == 0 && i % 5 == 0) return "FizzBuzz";
+             if (i % 15 == 0) return "FizzBuzz";
              else if (i % 3 == 0) return "Fizz";
              else if (i % 5 == 0) return "Buzz";
              else return String.valueOf(i); },
