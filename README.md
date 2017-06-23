@@ -6,16 +6,13 @@ Minimalisp is a drop in library for standard Java projects that:
  - makes Java list processing as easy, succinct and enjoyable as programming in Clojure or Ruby;
  - embraces Immutability and helps you program in a more functional style; 
  - involves less boilerplate than using Java 1.8 streams directly;
- - can be dropped in to your existing Java projects today.
-
-
+ - you can use with your existing code today.
 
 ### Quick Example
 
 Instead of [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), you can write FizzBuzz like this:
 
 ```java
-
 public List<String> fizzBuzz(int start, int finish){
   return map( 
            i -> {
@@ -23,11 +20,8 @@ public List<String> fizzBuzz(int start, int finish){
              else if (i % 3 == 0) return "Fizz";
              else if (i % 5 == 0) return "Buzz";
              else return String.valueOf(i); },
-           range(start, finish)  
-  );
+           range(start, finish));
 }
-
-
 List<String> fizzBuzz = fizzBuzz(1, 21);   // => ["1", "2", "Fizz", "4", "Buzz", 
                                            //     "Fizz", "7", "8", "Fizz", "Buzz", 
                                            //     "11", "Fizz", "13", "14", "FizzBuzz", 
