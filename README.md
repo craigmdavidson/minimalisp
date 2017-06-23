@@ -2,21 +2,27 @@
 
 # Minimalisp
 
-With Minimalisp, instead of looking like [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), you can write a FizzBuzz like this:
+Minimalisp is a drop in library for standard Java projects that:
+ - makes Java list processing as easy, succinct and enjoyable as programming in Clojure or Ruby;
+ - uses standard Java collections;
+ - embraces immutability and helps you program in a more functional style; 
+ - involves less boilerplate than using Java 1.8 streams directly;
+ - you can use with your existing code today.
+
+### Quick Example
+
+Instead of [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), you can write FizzBuzz like this:
 
 ```java
-
-public List<String> fizzBuzz(int start, int finish){
-  return map(
-           range(start, finish), 
+public List<String> fizzBuzz(int start, int finish) {
+  return map( 
            i -> {
-             if (i % 3 == 0 && i % 5 == 0) return "FizzBuzz";
+             if (i % 15 == 0) return "FizzBuzz";
              else if (i % 3 == 0) return "Fizz";
              else if (i % 5 == 0) return "Buzz";
-             else return String.valueOf(i); });
+             else return String.valueOf(i); },
+           range(start, finish));
 }
-
-
 List<String> fizzBuzz = fizzBuzz(1, 21);   // => ["1", "2", "Fizz", "4", "Buzz", 
                                            //     "Fizz", "7", "8", "Fizz", "Buzz", 
                                            //     "11", "Fizz", "13", "14", "FizzBuzz", 
@@ -84,13 +90,13 @@ List<String> upcased = letters.
                          map(String::toUpperCase).
                          collect(Collections.toList);
 // just write this
-List<String> upcased = map(letters), String::toUpperCase); 
+List<String> upcased = map(String::toUpperCase, letters); 
 
-int reduced = reduce(list(1,2,3,4,5), (a, b) -> a+b);                       // 15
+int reduced = reduce((a, b) -> a+b, list(1,2,3,4,5));                       // 15
 
 List<String> distincts = distinct(list("A", "B", "A", "B", "C", "A", "D")); // => ["A", "B", "C", "D"]
 
-List<Integer> numbers = filter(list(1, 2, 3, 4, 5, 6, 7), i -> i % 2 == 0); // => [2, 4, 6]
+List<Integer> numbers = filter(i -> i % 2 == 0, list(1, 2, 3, 4, 5, 6, 7)); // => [2, 4, 6]
 ```
 
 ### Easy simple and no-so-simple Sorting
@@ -101,7 +107,7 @@ List<String> words = list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the
 List<String> sortedNaturally = sort(words);      
 // => ["Brown", "Fox", "Jumped", "Quick", "The", "dogs", "lazy", "over", "the"];
 
-List<String> sortedByLength = sortBy(words, String::length); 
+List<String> sortedByLength = sortBy(String::length, words); 
 // => ["The", "Fox", "the", "over", "lazy", "dogs", "Quick", "Brown", "Jumped"];
 ```
 
