@@ -1,19 +1,30 @@
 [![Build Status](https://travis-ci.org/craigmdavidson/minimalisp.svg?branch=master)](https://travis-ci.org/craigmdavidson/minimalisp) [![Code Climate](https://codeclimate.com/github/craigmdavidson/minimalisp/badges/gpa.svg)](https://codeclimate.com/github/craigmdavidson/minimalisp) [![codecov](https://codecov.io/gh/craigmdavidson/minimalisp/branch/master/graph/badge.svg)](https://codecov.io/gh/craigmdavidson/minimalisp) [ ![Download](https://api.bintray.com/packages/craigmdavidson/minimalisp/minimalisp/images/download.svg) ](https://bintray.com/craigmdavidson/minimalisp/minimalisp/_latestVersion)
 
 # Minimalisp
+Minimalisp is a simple list processing library to make standard Java a more [acceptable Lisp](http://www.randomhacks.net/2005/12/03/why-ruby-is-an-acceptable-lisp/). 
 
-With Minimalisp, instead of looking like [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), you can write a FizzBuzz like this:
+Minimalisp is a drop in library for standard Java projects that :
+ - makes Java list processing as easy, succinct and enjoyable as programming in Clojure or Ruby;
+ - embraces Immutability; 
+ - you can use on your existing Java projects today.
+
+
+
+### Quick Example
+
+Instead of [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), you can write FizzBuzz like this:
 
 ```java
 
 public List<String> fizzBuzz(int start, int finish){
-  return map(
-           range(start, finish), 
+  return map( 
            i -> {
              if (i % 3 == 0 && i % 5 == 0) return "FizzBuzz";
              else if (i % 3 == 0) return "Fizz";
              else if (i % 5 == 0) return "Buzz";
-             else return String.valueOf(i); });
+             else return String.valueOf(i); },
+           range(start, finish)  
+  );
 }
 
 
@@ -84,13 +95,13 @@ List<String> upcased = letters.
                          map(String::toUpperCase).
                          collect(Collections.toList);
 // just write this
-List<String> upcased = map(letters), String::toUpperCase); 
+List<String> upcased = map(String::toUpperCase, letters); 
 
-int reduced = reduce(list(1,2,3,4,5), (a, b) -> a+b);                       // 15
+int reduced = reduce((a, b) -> a+b, list(1,2,3,4,5));                       // 15
 
 List<String> distincts = distinct(list("A", "B", "A", "B", "C", "A", "D")); // => ["A", "B", "C", "D"]
 
-List<Integer> numbers = filter(list(1, 2, 3, 4, 5, 6, 7), i -> i % 2 == 0); // => [2, 4, 6]
+List<Integer> numbers = filter(i -> i % 2 == 0, list(1, 2, 3, 4, 5, 6, 7)); // => [2, 4, 6]
 ```
 
 ### Easy simple and no-so-simple Sorting
@@ -101,7 +112,7 @@ List<String> words = list("The", "Quick", "Brown", "Fox", "Jumped", "over", "the
 List<String> sortedNaturally = sort(words);      
 // => ["Brown", "Fox", "Jumped", "Quick", "The", "dogs", "lazy", "over", "the"];
 
-List<String> sortedByLength = sortBy(words, String::length); 
+List<String> sortedByLength = sortBy(String::length, words); 
 // => ["The", "Fox", "the", "over", "lazy", "dogs", "Quick", "Brown", "Jumped"];
 ```
 
