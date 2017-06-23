@@ -2,7 +2,7 @@
 
 # Minimalisp
 
-Minimalisp is a drop in library for standard Java projects that :
+Minimalisp is a drop in library for standard Java projects that:
  - makes Java list processing as easy, succinct and enjoyable as programming in Clojure or Ruby;
  - embraces Immutability; 
  - you can use on your existing Java projects today.
