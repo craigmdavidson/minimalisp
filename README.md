@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/craigmdavidson/minimalisp.svg?branch=master)](https://travis-ci.org/craigmdavidson/minimalisp) [![Code Climate](https://codeclimate.com/github/craigmdavidson/minimalisp/badges/gpa.svg)](https://codeclimate.com/github/craigmdavidson/minimalisp) [![codecov](https://codecov.io/gh/craigmdavidson/minimalisp/branch/master/graph/badge.svg)](https://codecov.io/gh/craigmdavidson/minimalisp) [ ![Download](https://api.bintray.com/packages/craigmdavidson/minimalisp/minimalisp/images/download.svg) ](https://bintray.com/craigmdavidson/minimalisp/minimalisp/_latestVersion)
 
 # Minimalisp
-Minimalisp is a simple list processing library to make standard Java a more [acceptable Lisp](http://www.randomhacks.net/2005/12/03/why-ruby-is-an-acceptable-lisp/). 
 
 Minimalisp is a drop in library for standard Java projects that :
  - makes Java list processing as easy, succinct and enjoyable as programming in Clojure or Ruby;
