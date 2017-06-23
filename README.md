@@ -13,7 +13,7 @@ Minimalisp is a drop in library for standard Java projects that:
 Instead of [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), you can write FizzBuzz like this:
 
 ```java
-public List<String> fizzBuzz(int start, int finish){
+public List<String> fizzBuzz(int start, int finish) {
   return map( 
            i -> {
              if (i % 15 == 0) return "FizzBuzz";
