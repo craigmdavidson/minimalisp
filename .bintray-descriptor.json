@@ -1,9 +1,6 @@
 {
   "package": { "name": "minimalisp", "repo": "minimalisp", "subject": "craigmdavidson" },
   "version": { "name": "0.0.4" },
-  "files": [ 
-    {"includePattern": "target/(.*\.jar)", "uploadPattern": "/$1"}, 
-    {"includePattern": "*/(.*\.pom)", "uploadPattern": "/$1"}
-  ],
+  "files": [ {"includePattern": "target/(.*)", "excludePattern": "target/.*.zip$", "uploadPattern": "/$1"} ],
   "publish": true
 }
