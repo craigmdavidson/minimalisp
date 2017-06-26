@@ -3,11 +3,11 @@
 # Minimalisp
 
 Minimalisp is a drop in library for standard Java projects that:
- - makes Java list processing as easy, succinct and enjoyable as programming in Clojure or Ruby;
+ - makes list processing as easy, succinct and enjoyable as programming in Clojure or Ruby;
  - uses standard Java collections;
  - embraces immutability and helps you program in a more functional style; 
  - involves less boilerplate than using Java 1.8 streams directly;
- - you can use with your existing code today.
+ - integrates seemlessly with your existing code.
 
 ### Quick Example
 
