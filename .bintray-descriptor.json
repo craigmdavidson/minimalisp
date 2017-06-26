@@ -4,7 +4,7 @@
   
   "files": [ 
     {"includePattern": "target/(.*\.jar)", "uploadPattern": "/$1"},
-    {"includePattern": "pom.xml:", "uploadPattern": "/$1"} ],
+    {"includePattern": "./pom.xml:", "uploadPattern": "/$1"} ],
   
   "publish": true
 }
