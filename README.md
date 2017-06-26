@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/craigmdavidson/minimalisp.svg?branch=master)](https://travis-ci.org/craigmdavidson/minimalisp) [![Code Climate](https://codeclimate.com/github/craigmdavidson/minimalisp/badges/gpa.svg)](https://codeclimate.com/github/craigmdavidson/minimalisp) [![codecov](https://codecov.io/gh/craigmdavidson/minimalisp/branch/master/graph/badge.svg)](https://codecov.io/gh/craigmdavidson/minimalisp) [ ![Download](https://api.bintray.com/packages/craigmdavidson/minimalisp/minimalisp/images/download.svg) ](https://bintray.com/craigmdavidson/minimalisp/minimalisp/_latestVersion)
+[![Build Status](https://travis-ci.org/craigmdavidson/minimalisp.svg?branch=master)](https://travis-ci.org/craigmdavidson/minimalisp) [![Code Climate](https://codeclimate.com/github/craigmdavidson/minimalisp/badges/gpa.svg)](https://codeclimate.com/github/craigmdavidson/minimalisp) [![codecov](https://codecov.io/gh/craigmdavidson/minimalisp/branch/master/graph/badge.svg)](https://codecov.io/gh/craigmdavidson/minimalisp) 
 
 # Minimalisp
 
