@@ -9,6 +9,7 @@ Minimalisp is a drop in library for standard Java projects that:
  - involves less boilerplate than using Java 1.8 streams directly;
  - integrates seemlessly with your existing code.
 
+
 ### Quick Example
 
 Instead of [this](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition), you can write FizzBuzz like this:
